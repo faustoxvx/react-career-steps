@@ -3,20 +3,28 @@ import {useState} from "react";
 const messages = ["Learn React ⚛️", "Apply for jobs 💼", "Learn and Earn 🤑"];
 
 export default function App() {
+  return (
+    <div>
+      <CareerSteps />
+    </div>
+  );
+}
+
+function CareerSteps() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
 
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((currStep) => currStep - 1);
   }
 
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) setStep((currStep) => currStep + 1);
   }
 
   return (
     <>
-      <button className='close' onClick={() => setIsOpen(!isOpen)}>
+      <button className='close' onClick={() => setIsOpen((isOpen) => !isOpen)}>
         &times;
       </button>
 
